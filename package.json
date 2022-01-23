@@ -1,18 +1,15 @@
 {
-  "homepage": "https://Raghad-2021.github.io/backennnnd-ffffanaly/",
   "name": "backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "react-scripts start",
-    "start": "serve -s build",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "heroku-postbuild":"npm run install-client && npm run build"
+ 
   },
   "keywords": [],
   "author": "",
