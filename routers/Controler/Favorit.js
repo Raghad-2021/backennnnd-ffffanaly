@@ -18,18 +18,20 @@ const getFavorit = async (req, res) => {
   // console.log("like");
 
   const addFavorit = async (req, res) => {
+    // ارسلنا id من البرامس
     const id = req.params.id;
     const user = req.token.userId;
-
+// يسوي بحث للموفز بناء على اي دي الفلم واي دي اليوزر 
+// اليوزر عشان مايطلع الا لليوزر المتصل
     const isFav = await FavoriteModel.findOne({userId : user, moviesId:id})
+          // سوينا شرط يشوف اذا فيه عنصر موجود بسكيما المفضله او لا
+
     if (isFav) {
-      
       await FavoriteModel.findOneAndDelete({userId : user, moviesId:id})
+      // اذا موجود الشرط يسوي ويرسله للفرونت
       const like = await FavoriteModel.find({userId:user}).populate("userId").populate("moviesId");
       res.status(201).json(like)
-
     }else{
-
       const newFav = new FavoriteModel({userId : user, moviesId:id})
       try{
         await newFav.save()

@@ -3,7 +3,7 @@ const userModel = require("../../db/models/userModel");
 
 
 exports.adminAuth = async (req,res , next) => {
-
+// ميدلوير نشيك فيه اذا اليوزر نوعه ادمن نكمل 
   const {userId} = req.body;
    // ناخذ اليوزر id من البودي 
   const user = await userModel.findById(userId)
